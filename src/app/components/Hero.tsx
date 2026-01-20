@@ -1,10 +1,14 @@
 import { ArrowRight, TrendingUp, Users, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
+import { AnimatedBackground } from './AnimatedBackground';
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-red-50/30 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Animated Background */}
+      <AnimatedBackground variant="hero" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div 

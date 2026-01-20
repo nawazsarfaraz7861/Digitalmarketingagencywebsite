@@ -1,5 +1,5 @@
 import { Star, Quote } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export function Testimonials() {

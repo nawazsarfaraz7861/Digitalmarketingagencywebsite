@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import logo from 'figma:asset/8175a1ba3ab442652c3bf5298c1b9eef57c323a5.png';
 
 export function Navbar() {
@@ -26,10 +26,10 @@ export function Navbar() {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-[#C62828] to-[#B71C1C] ${
         scrolled 
-          ? 'bg-white shadow-lg' 
-          : 'bg-white/95 backdrop-blur-sm border-b border-border'
+          ? 'shadow-2xl shadow-[#C62828]/20' 
+          : 'shadow-lg shadow-[#C62828]/10'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -44,7 +44,12 @@ export function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <a href="#home">
-              <img src={logo} alt="Majestro Media" className="h-12 w-auto" />
+              <img 
+                src={logo} 
+                alt="Majestro Media" 
+                className="h-16 w-auto brightness-0 invert" 
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </a>
           </motion.div>
 
@@ -54,18 +59,18 @@ export function Navbar() {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-foreground hover:text-[#C62828] transition-colors duration-200 relative group"
+                className="text-white/90 hover:text-white transition-colors duration-200 relative group font-medium"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#C62828] group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
             <motion.a
               href="#contact"
-              className="bg-[#C62828] text-white px-6 py-2.5 rounded-full hover:bg-[#B71C1C] transition-all duration-200 hover:shadow-lg"
+              className="bg-white text-[#C62828] px-6 py-2.5 rounded-full hover:bg-gray-100 transition-all duration-200 hover:shadow-lg font-medium"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -80,7 +85,7 @@ export function Navbar() {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-[#C62828] transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
               aria-label="Toggle menu"
               whileTap={{ scale: 0.9 }}
             >
@@ -94,7 +99,7 @@ export function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            className="md:hidden bg-white border-t border-border"
+            className="md:hidden bg-[#B71C1C] border-t border-white/10"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -105,7 +110,7 @@ export function Navbar() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="block px-3 py-2 text-foreground hover:text-[#C62828] hover:bg-secondary/50 rounded-lg transition-colors"
+                  className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
                   onClick={() => setIsMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -116,7 +121,7 @@ export function Navbar() {
               ))}
               <motion.a
                 href="#contact"
-                className="block text-center bg-[#C62828] text-white px-6 py-2.5 rounded-full hover:bg-[#B71C1C] transition-colors mt-4"
+                className="block text-center bg-white text-[#C62828] px-6 py-2.5 rounded-full hover:bg-gray-100 transition-colors mt-4 font-medium"
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

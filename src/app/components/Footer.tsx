@@ -1,6 +1,7 @@
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import logo from 'figma:asset/8175a1ba3ab442652c3bf5298c1b9eef57c323a5.png';
+import { AnimatedBackground } from './AnimatedBackground';
 
 export function Footer() {
   const services = [
@@ -39,6 +40,9 @@ export function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
+      {/* Animated Background */}
+      <AnimatedBackground variant="dark" />
+      
       {/* Animated background circles */}
       <motion.div 
         className="absolute top-20 right-20 w-96 h-96 bg-[#C62828]/10 rounded-full blur-3xl"

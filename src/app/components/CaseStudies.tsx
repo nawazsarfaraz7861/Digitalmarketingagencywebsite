@@ -1,6 +1,6 @@
 import { ArrowUpRight, TrendingUp } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export function CaseStudies() {

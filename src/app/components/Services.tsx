@@ -1,6 +1,7 @@
 import { Search, Share2, PenTool, BarChart3, Mail, Megaphone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { AnimatedBackground } from './AnimatedBackground';
 
 export function Services() {
   const { ref, isInView } = useScrollAnimation();
@@ -45,8 +46,11 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 bg-white relative overflow-hidden" ref={ref}>
+      {/* Animated Background */}
+      <AnimatedBackground variant="default" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div 
           className="text-center max-w-3xl mx-auto mb-16"

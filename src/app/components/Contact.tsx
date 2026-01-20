@@ -1,7 +1,8 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { AnimatedBackground } from './AnimatedBackground';
 
 export function Contact() {
   const { ref, isInView } = useScrollAnimation();
@@ -58,8 +59,11 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-white relative overflow-hidden" ref={ref}>
+      {/* Animated Background */}
+      <AnimatedBackground variant="default" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div 
           className="text-center max-w-3xl mx-auto mb-16"
