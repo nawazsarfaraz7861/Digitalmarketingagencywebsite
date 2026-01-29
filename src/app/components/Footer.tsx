@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router';
 import logo from 'figma:asset/8175a1ba3ab442652c3bf5298c1b9eef57c323a5.png';
 import { AnimatedBackground } from './AnimatedBackground';
 
@@ -14,12 +15,12 @@ export function Footer() {
   ];
 
   const company = [
-    'About Us',
-    'Our Team',
-    'Careers',
-    'Blog',
-    'Case Studies',
-    'Contact',
+    { name: 'About Us', href: '/about' },
+    { name: 'Our Team', href: '/team' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   const resources = [
@@ -28,7 +29,7 @@ export function Footer() {
     'Webinars',
     'Templates',
     'FAQ',
-    'Privacy Policy',
+    { name: 'Privacy Policy', href: '/privacy' },
   ];
 
   const socialLinks = [
@@ -68,7 +69,9 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <img src={logo} alt="Majestro Media" className="h-12 w-auto mb-6" />
+            <Link to="/">
+              <img src={logo} alt="Majestro Media" className="h-12 w-auto mb-6" />
+            </Link>
             <p className="text-gray-300 mb-6 max-w-sm">
               Transform your brand with data-driven digital marketing strategies that deliver measurable results and sustainable growth.
             </p>
@@ -107,7 +110,7 @@ export function Footer() {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <a href="#services" className="text-gray-300 hover:text-[#C62828] transition-colors">
+                  <a href="/#services" className="text-gray-300 hover:text-[#C62828] transition-colors">
                     {service}
                   </a>
                 </motion.li>
@@ -130,9 +133,9 @@ export function Footer() {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <a href="#" className="text-gray-300 hover:text-[#C62828] transition-colors">
-                    {item}
-                  </a>
+                  <Link to={item.href} className="text-gray-300 hover:text-[#C62828] transition-colors">
+                    {item.name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -153,9 +156,15 @@ export function Footer() {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <a href="#" className="text-gray-300 hover:text-[#C62828] transition-colors">
-                    {resource}
-                  </a>
+                  {typeof resource === 'string' ? (
+                    <a href="#" className="text-gray-300 hover:text-[#C62828] transition-colors">
+                      {resource}
+                    </a>
+                  ) : (
+                    <Link to={resource.href} className="text-gray-300 hover:text-[#C62828] transition-colors">
+                      {resource.name}
+                    </Link>
+                  )}
                 </motion.li>
               ))}
             </ul>
@@ -244,13 +253,11 @@ export function Footer() {
 
             {/* Legal Links */}
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <motion.a 
-                href="#" 
-                className="hover:text-[#C62828] transition-colors"
-                whileHover={{ y: -2 }}
-              >
-                Privacy Policy
-              </motion.a>
+              <motion.div whileHover={{ y: -2 }}>
+                <Link to="/privacy" className="hover:text-[#C62828] transition-colors">
+                  Privacy Policy
+                </Link>
+              </motion.div>
               <motion.a 
                 href="#" 
                 className="hover:text-[#C62828] transition-colors"
